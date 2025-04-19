@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+RO:wght@100..400&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
+
+.winky-sans {
+    font-family: "Winky Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500; /* 300 to 900 */
+    font-style: normal;
+}
+  
+.playwrite-ro {
+    font-family: "Playwrite RO", cursive;
+    font-optical-sizing: auto;
+    font-weight: 250;  /* 100 to 400 */
+    font-style: normal;
+    font-size: 40px;
+}
+
+pre, code, code * {
+    margin: 0 !important;
+    padding: 0 !important;
+
+}
+
+p {
+    margin: 0 0 55px 0 !important;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0 0 55px 0 !important;
+    text-align: center;
+    font: inherit;
+    text-decoration: underline wavy;
+}
+
+code {
+    font-family: "Source Code Pro", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400; /* 200 to 900 */
+    font-style: normal;
+    /* background: rgba(0, 0, 0, 0.0) !important; */
+    background: none !important;
+    /* color: white; */
+    position: relative;
+    /* top: -5px; */
+    font-size: 30px;
+    line-height: 47px;
+}
+code.hljs {
+    /* top: -8px; */
+    text-align: left;
+    line-height: 55px;
+}
+ul {
+    margin: 0px;
+    list-style: circle;
+}
+ol {
+    margin: 0px;
+    list-style:lower-alpha;
+}
+li {
+    line-height: 52.5px;
+}

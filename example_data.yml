@@ -1,0 +1,47 @@
+sections:
+  1: "intro"
+  4: "somethine selse"
+
+cards:
+  3: |
+    # Un titre
+    This is a text slide shown as **slide 3**. This is going to be a bigger line.
+
+    A <u>new</u> line, try `nano` now!
+
+    This line is moved down...
+
+    ```
+    def greet(name):
+      x = 5
+      print(f"Hello, {name}! x = {x}")
+    if __name__ == "__main__":
+      greet("world")
+    ```
+    test
+    test
+
+    - some
+    - list
+    - here
+
+    1. work
+    2. from
+    3. home
+
+    final text
+  4: "Final slide is a quote."
+length: 4
+
+questions:
+  2:
+    question: "What is shown in slide 1?"
+    answer: 1
+  4:
+    answer: 3
+  5:
+    question: "What time is it?"
+questions_length: 5
+
+options:
+  random: true
