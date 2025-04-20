@@ -15,10 +15,14 @@
     font-size: 40px;
 }
 
-code, code * {
+code {
     margin: 0 !important;
     padding: 0 !important;
+}
 
+code * {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .paper h1, 

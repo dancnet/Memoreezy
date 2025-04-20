@@ -1,6 +1,7 @@
 <script>
     import { tick } from 'svelte';
     import { hash, current, questions_random_pile } from '$lib/store';
+    import { onMount, onDestroy } from 'svelte';
     
     const next = () => {
         if ($hash.type === 'card') {
@@ -66,6 +67,20 @@
     }
     $: text, fix_paper_div();
 
+    let key = 0;
+    const render_again = () => {
+        key += 1;
+        fix_paper_div();
+    }
+
+    onMount(() => {
+		window.addEventListener('resize', render_again);
+	});
+
+	onDestroy(() => {
+		window.removeEventListener('resize', render_again);
+	});
+
 </script>
 
 <div class="main-wrapper">
@@ -90,9 +105,11 @@
         <!-- svelte-ignore a11y_missing_attribute -->
         <img src="{url}" class="w3-card-4">
         {:else if type === 'txt'}
+        {#key key}
         <div bind:this={paper_div} class="paper w3-card playwrite-ro">
             {@html text}
         </div>
+        {/key}
         {/if}
     </div>
     <!-- svelte-ignore a11y_consider_explicit_label -->
@@ -120,6 +137,7 @@ img {
     background: repeating-linear-gradient(to bottom,#ffeb3b,#ffeb3b 54px,black 55px);
     background-size: 100% 55px;
     background-attachment: local;
+    overscroll-behavior: none;
 }
 .paper::-webkit-scrollbar {
     display: none;
