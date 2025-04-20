@@ -7,6 +7,7 @@
                 type: 'card',
                 id: $hash.id + 1
             });
+            scroll_to_top();
         } else if ($hash.type === 'question') {
             hash.set({
                 type: 'question',
@@ -21,6 +22,7 @@
             type: $hash.type,
             id: $hash.id - 1
         });
+        scroll_to_top();
     }
 
     let type, url, text, showing_answer;
@@ -41,6 +43,11 @@
             ({type, url, text} = data);
             showing_answer = !showing_answer;
         }
+    }
+
+    let text_content_div;
+    const scroll_to_top = () => {
+        text_content_div.scrollTo({top: 0});
     }
 </script>
 
@@ -66,7 +73,7 @@
         <!-- svelte-ignore a11y_missing_attribute -->
         <img src="{url}" class="w3-card-4">
         {:else if type === 'txt'}
-        <div class="text-content w3-card playwrite-ro">
+        <div bind:this={text_content_div} class="text-content w3-card playwrite-ro">
             {@html text}
         </div>
         {/if}
