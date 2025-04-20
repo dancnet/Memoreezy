@@ -36,7 +36,7 @@
     {#if isIOS}
     <div class="w3-dropdown-click w3-light-grey">
         <!-- svelte-ignore a11y_consider_explicit_label -->
-        <button class="w3-button w3-text-cyan" on:click={() => show_menu = !show_menu}>
+        <button class="w3-button w3-text-cyan w3-large" on:click={() => show_menu = !show_menu}>
             <i class="fa-regular fa-folder-open"></i>
         </button>
         <div class="w3-dropdown-content w3-bar-block w3-border winky-sans" class:w3-show={show_menu}>
@@ -48,7 +48,7 @@
     {:else}
     <div class="w3-dropdown-hover w3-light-grey">
         <!-- svelte-ignore a11y_consider_explicit_label -->
-        <button class="w3-button w3-text-cyan">
+        <button class="w3-button w3-text-cyan w3-large">
             <i class="fa-regular fa-folder-open"></i>
         </button>
         <div class="w3-dropdown-content w3-bar-block w3-border winky-sans">
@@ -61,13 +61,13 @@
     {/if}
     {#if $options['random'] === true}
     <!-- svelte-ignore a11y_consider_explicit_label -->
-    <button class="w3-button w3-text-cyan" on:click={random}>
+    <button class="w3-button w3-text-cyan w3-large" on:click={random}>
         <i class="fa-solid fa-shuffle"></i>
     </button>
     {/if}
     {#if $questions.length > 0}
     <!-- svelte-ignore a11y_consider_explicit_label -->
-    <button class="w3-button w3-text-cyan" on:click={toggle_question}>
+    <button class="w3-button w3-text-cyan w3-large" on:click={toggle_question}>
         {#if $hash.type === 'card'}
         <i class="fa-regular fa-circle-question"></i>
         {:else if $hash.type === 'question'}
@@ -75,7 +75,7 @@
         {/if}
     </button>
     {/if}
-    <div class="w3-bar-item w3-text-cyan winky-sans">
+    <div class="w3-bar-item w3-text-cyan winky-sans w3-large">
         {$hash.id + 1}/{$current.length}
     </div>
 </div>
