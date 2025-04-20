@@ -15,7 +15,7 @@
     font-size: 40px;
 }
 
-pre, code, code * {
+code, code * {
     margin: 0 !important;
     padding: 0 !important;
 
@@ -40,9 +40,14 @@ pre, code, code * {
     margin: 0 0 55px 0 !important;
 }
 
+.paper pre {
+    margin: 0 0 55px 0 !important;
+}
+
 .paper p:last-child
 .paper ul:last-child
-.paper ol:last-child {
+.paper ol:last-child
+.paper pre:last-child {
     margin: 0px !important;
 }
 

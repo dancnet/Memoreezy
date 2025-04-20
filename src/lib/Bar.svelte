@@ -6,6 +6,7 @@
             type: 'card',
             id: card_id
         });
+        show_menu = false;
     }
 
     const toggle_question = () => {
@@ -25,10 +26,26 @@
             id: +cards_random_pile
         });
     }
+
+    let show_menu = false;
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 </script>
 
 <div class="w3-bar w3-border-bottom">
     {#if $sections.length > 0}
+    {#if isIOS}
+    <div class="w3-dropdown-click w3-light-grey">
+        <!-- svelte-ignore a11y_consider_explicit_label -->
+        <button class="w3-button w3-text-cyan" on:click={() => show_menu = !show_menu}>
+            <i class="fa-regular fa-folder-open"></i>
+        </button>
+        <div class="w3-dropdown-content w3-bar-block w3-border winky-sans" class:w3-show={show_menu}>
+            {#each $sections as section}
+            <button class="w3-bar-item w3-button w3-text-cyan" on:click={() => move(section['card_id'])}>{section['name']}</button>
+            {/each}
+        </div>
+    </div>
+    {:else}
     <div class="w3-dropdown-hover w3-light-grey">
         <!-- svelte-ignore a11y_consider_explicit_label -->
         <button class="w3-button w3-text-cyan">
@@ -40,6 +57,7 @@
             {/each}
         </div>
     </div>
+    {/if}
     {/if}
     {#if $options['random'] === true}
     <!-- svelte-ignore a11y_consider_explicit_label -->
