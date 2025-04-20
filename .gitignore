@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 public/*.jpg
-public/data.yml
+public/data*.yml
 
 # Editor directories and files
 .vscode/*

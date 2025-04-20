@@ -86,6 +86,13 @@ const gen_questions = (yamlQuestions, length, cards) => {
     return questions;
 };
 
+const setTitle = (title) => {
+    if (title) {
+        document.title = title;
+        document.querySelector('meta[name="apple-mobile-web-app-title"]').setAttribute('content', title);
+    }
+}
+
 export const fetch_data = () => {
     fetch('data.yml')
     .then(res => res.text())
@@ -96,6 +103,7 @@ export const fetch_data = () => {
         sections.set(gen_sections(data.sections));
         questions.set(gen_questions(data.questions, data.questions_length, generated_cards));
         options.set(data.options);
+        setTitle(data.title)
     })
     .catch(err => {
         alert("Currently experiencing issues: " + err.message);
