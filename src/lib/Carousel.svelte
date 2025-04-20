@@ -109,8 +109,8 @@ img {
 }
 .paper {
     width: calc(100vw - 102px);
-    min-height: min(438px, 100vh - 40px);
-    max-height: calc(100vh - 40px);
+    min-height: min(438px, 100vh - 50px);
+    max-height: calc(100vh - 50px);
     line-height: 55px;
     overflow-y: auto;
     scrollbar-width: none;
