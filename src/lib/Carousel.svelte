@@ -1,4 +1,5 @@
 <script>
+    import { tick } from 'svelte';
     import { hash, current, questions_random_pile } from '$lib/store';
     
     const next = () => {
@@ -7,7 +8,6 @@
                 type: 'card',
                 id: $hash.id + 1
             });
-            scroll_to_top();
         } else if ($hash.type === 'question') {
             hash.set({
                 type: 'question',
@@ -22,7 +22,6 @@
             type: $hash.type,
             id: $hash.id - 1
         });
-        scroll_to_top();
     }
 
     let type, url, text, showing_answer;
@@ -45,10 +44,28 @@
         }
     }
 
-    let text_content_div;
-    const scroll_to_top = () => {
-        text_content_div.scrollTo({top: 0});
+    let paper_div;
+    const fix_paper_div = async () => {
+        const THRESHOLD = 10;
+        const BASE = 55;
+        await tick();
+        if(paper_div) {
+            paper_div.scrollTo({top: 0});
+            Array.from(paper_div.children).forEach(el => {
+                const height = el.offsetHeight;
+                const mod = height % BASE;
+                let roundedHeight;
+                if (mod <= THRESHOLD) {
+                    roundedHeight = Math.floor(height / BASE) * BASE;
+                } else {
+                    roundedHeight = Math.ceil(height / BASE) * BASE;
+                }
+                el.style.height = `${roundedHeight}px`;
+            });
+        }
     }
+    $: text, fix_paper_div();
+
 </script>
 
 <div class="main-wrapper">
@@ -73,7 +90,7 @@
         <!-- svelte-ignore a11y_missing_attribute -->
         <img src="{url}" class="w3-card-4">
         {:else if type === 'txt'}
-        <div bind:this={text_content_div} class="text-content w3-card playwrite-ro">
+        <div bind:this={paper_div} class="paper w3-card playwrite-ro">
             {@html text}
         </div>
         {/if}
@@ -90,24 +107,21 @@ img {
     max-height: calc(100% - 25px);
     object-fit: contain
 }
-.text-content {
+.paper {
     width: calc(100vw - 102px);
-    /* height: min(max(438px, auto), calc(100% - 40px)); */
     min-height: min(438px, 100vh - 40px);
     max-height: calc(100vh - 40px);
+    line-height: 55px;
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    /* padding: 10px 10px 45px 10px; */
     padding: 10px 20px;
-    font-size: 33px;
     color: #1E4E8C;
     background: repeating-linear-gradient(to bottom,#ffeb3b,#ffeb3b 54px,black 55px);
     background-size: 100% 55px;
     background-attachment: local;
-    line-height: 55px;
 }
-.text-content::-webkit-scrollbar {
+.paper::-webkit-scrollbar {
     display: none;
 }
 .main-wrapper {

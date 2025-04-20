@@ -21,43 +21,49 @@ pre, code, code * {
 
 }
 
-p {
-    margin: 0 0 55px 0 !important;
-}
-
-h1, h2, h3, h4, h5 {
+.paper h1, 
+.paper h2,
+.paper h3,
+.paper h4,
+.paper h5 {
     margin: 0 0 55px 0 !important;
     text-align: center;
     font: inherit;
+    font-size: 40px;
     text-decoration: underline wavy;
 }
 
-code {
+.paper p,
+.paper ul,
+.paper ol {
+    font-size: 30px;
+    margin: 0 0 55px 0 !important;
+}
+
+.paper p:last-child
+.paper ul:last-child
+.paper ol:last-child {
+    margin: 0px !important;
+}
+
+.paper ul {
+    list-style: circle;
+}
+.paper ol {
+    list-style:lower-alpha;
+}
+
+.paper code {
+    border: 1px solid #1E4E8C;
+    border-radius: 10px;
+    padding: 5px !important;
     font-family: "Source Code Pro", monospace;
     font-optical-sizing: auto;
     font-weight: 400; /* 200 to 900 */
     font-style: normal;
-    /* background: rgba(0, 0, 0, 0.0) !important; */
-    background: none !important;
-    /* color: white; */
-    position: relative;
-    /* top: -5px; */
-    font-size: 30px;
-    line-height: 47px;
+    font-size: 25px;
 }
-code.hljs {
-    /* top: -8px; */
-    text-align: left;
-    line-height: 55px;
-}
-ul {
-    margin: 0px;
-    list-style: circle;
-}
-ol {
-    margin: 0px;
-    list-style:lower-alpha;
-}
-li {
-    line-height: 52.5px;
+
+.paper pre code {
+    background-color: rgba(255, 255, 255, 0.7);
 }
